@@ -1,0 +1,96 @@
+﻿*{
+	font-family: 'Arsenal-Regular';
+}
+body{
+	background-image: linear-gradient(-110deg, #00bfff, #ffff);
+	font-family: 'Arsenal-Regular';
+}
+@font-face {
+	font-family: 'Arsenal-Regular';
+	src: url('../fonts/arsenal-regular.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/arsenal-regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/arsenal-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/arsenal-regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/arsenal-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/arsenal-regular.svg#arsenal-regular') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+.line{
+	margin-top: 30px;
+	background: black;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--c: #141414;
+	--i: calc(1vw+1vh);
+	--transition: 1.25s cubic-bezier(.05, .5, 0, 1);
+	--transition-cursor: 2s cubic-bezier(.2, .5, 0, 1);
+}
+
+.magic-list {
+	font-family: arsenal_f, sans-serif;
+	font-size: calc(var(--i)*2);
+	padding: calc(var(--i)*2);
+}
+.magic-list__item{
+ text-decoration: none;
+ color: var(--c);
+ cursor: none;
+ display: block;
+ line-height: 9;
+ padding: calc(var(--i)*3) calc(var(--i)*7.5);
+ border-bottom: 1px solid rgb(0 0 0 / 0.9);
+ counter-increment: my-counter;
+}
+.magic-list__item:first-child {
+border-top: 1.5px solid var(--c); 
+}
+.magic-list__header {
+transition: transform var(--transition);
+}
+.magic-list__item::before {
+position: absolute;
+font-size: calc(var(--i) / 2);
+letter-spacing: .5px;
+transition: transform var(--transition);
+}
+.magic-list__item:hover .magic-list__header,
+.magic-list__item:hover::before {
+transform: translate3d(calc(var(--i) * -5), 0, 0);
+}
+.cursor {
+--width: calc(var(--i) * 20);
+--height: calc(var(--i) * 15);
+position: fixed;
+width: var(--width);
+height: 0;
+top: calc(var(--height) * -.5);
+left: calc(var(--width) * -.5);
+overflow: hidden;
+transform: translate3d(var(--move-x), var(--move-y), 0);
+transition: transform var(--transition-cursor), height 1s ease;
+z-index: -1;
+will-change: transform;
+}
+.magic-list__item:hover .cursor {
+height: var(--height);
+}
+.cursor__image {
+--cursor-transform: translate3d(calc(var(--move-x) / -5), calc(var(--move-y) / -5), 0);
+position: relative;
+width: calc(var(--width) * 2);
+height: calc(var(--height) * 2);
+top: calc(var(--height) * -.4);
+left: calc(var(--width) * -.25);
+background-size: cover;
+background-position: center;
+transform: var(--cursor-transform) scale(2);
+transition: transform var(--transition-cursor);
+}
+.magic-list__item:hover .cursor__image {
+ transform: var(--cursor-transform) scale(1);
+} 
